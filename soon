@@ -1,7 +1,10 @@
+-- Set Up --
 local deleteRemote
 local char = game:GetService("Players").LocalPlayer.Character
+-- Getting All Remotes --
 for _,remote in pairs(game:GetDescendants()) do
-  if remote:IsA("RemoteEvent") do
+  if remote:IsA("RemoteEvent") then
+    -- Running Tests --
     remote:FireServer(char:WaitForChild("Head"))
     task.wait(0.5)
     if not char:FindFirstChild("Head") then
