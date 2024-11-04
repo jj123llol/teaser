@@ -1,0 +1,22 @@
+local deleteRemote
+local char = game:GetService("Players").LocalPlayer.Character
+for _,remote in pairs(game:GetDescendants()) do
+  if remote:IsA("RemoteEvent") do
+    remote:FireServer(char:WaitForChild("Head"))
+    task.wait(0.5)
+    if not char:FindFirstChild("Head") then
+      deleteRemote = remote
+      break
+    end
+  end
+end
+
+if deleteRemote ~= nil then
+  -- Add Commands -- 
+  addcmd("kill","kill (plr)",function(target)
+    targets = getPlayer(target)
+    for _,target in pairs(targets) do
+      deleteRemote:FireServer(target.Character:WaitForChild("Head"))
+    end
+  end)
+end
