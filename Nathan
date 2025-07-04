@@ -106,6 +106,6 @@ end
 
 getgenv().PlasmaPrint = function(id, txt)
 	local check = devC.cmPrint(id, txt)
-	task.wait(1/30)
+	task.wait(1)
 	return check
 end
